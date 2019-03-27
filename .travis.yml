@@ -1,0 +1,26 @@
+sudo: false
+language: python
+dist: xenial
+group: travis_latest
+
+addons:
+    apt:
+        packages:
+            - g++-5
+            - libatlas-dev
+            - libatlas-base-dev
+
+cache: pip
+
+matrix:
+    include:
+    - name: "3.6 + pythran master"
+      python: "3.6"
+      install: 
+          - pip install --upgrade pip setuptools wheel 
+          - pip install --only-binary=numpy,scipy -U numpy scipy pytest
+          - pip install git+https://github.com/serge-sans-paille/pythran
+
+script:
+    - pythran a.py
+    
