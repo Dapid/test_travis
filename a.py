@@ -1,6 +1,6 @@
 import numpy as np
 
-# pythran export compute_theta(int8[:, :])
+# pythran export compute_theta(int32[:, :])
 def compute_theta(alignment):
     n_cols = alignment.shape[0]
     total = 0
